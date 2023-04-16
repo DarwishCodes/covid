@@ -12,12 +12,12 @@ app = Flask(__name__)
 
 model = load_model('model/model.h5')
 
-def preprocess(img):
-	img=np.array(img)
-	img = cv2.resize(img, (img_size, img_size))
-	img = img.reshape(-1, img_size, img_size, 1)
-	img = img / 255.0
-	return img
+#def preprocess(img):
+	#img=np.array(img)
+	#img = cv2.resize(img, (img_size, img_size))
+	#img = img.reshape(-1, img_size, img_size, 1)
+	#img = img / 255.0
+	#return img
 
 # App on web
 @app.route("/")
@@ -28,22 +28,22 @@ def index():
 def predict():
 
 	# Decode the encoded Image from base64 to dataBytesIO
-	message = request.get_json(force=True)
-	encoded = message['image']
-	decoded = base64.b64decode(encoded)
-	dataBytesIO=io.BytesIO(decoded)
-	dataBytesIO.seek(0)
-	image = Image.open(dataBytesIO)
+	#message = request.get_json(force=True)
+	#encoded = message['image']
+	#decoded = base64.b64decode(encoded)
+	#dataBytesIO=io.BytesIO(decoded)
+	#dataBytesIO.seek(0)
+	#image = Image.open(dataBytesIO)
 
 	# Preprocess the fetched image
-	test_image=preprocess(image)
+	#test_image=preprocess(image)
 
 	# Start predict the image
-	prediction = model.predict(test_image)
+	#prediction = model.predict(test_image)
 	
 	# Convert the prediction to a class label
-	label = 'NORMAL' if prediction[0][0] > 0.5 else 'PNEUMONIA'
-
+	#label = 'NORMAL' if prediction[0][0] > 0.5 else 'PNEUMONIA'
+	label = 0;
 	print(label)
 
 	response = {'prediction': {'result': label}}
