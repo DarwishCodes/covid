@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request,jsonify
+import tensorflow as tf
 from keras.models import load_model
 import cv2
 import numpy as np
@@ -10,7 +11,8 @@ img_size = 150
 
 app = Flask(__name__) 
 
-model = load_model('model/model.h5')
+with tf.device('/cpu:0'):
+    model = load_model('model/model.h5')
 
 def preprocess(img):
 	img=np.array(img)
