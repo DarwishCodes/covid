@@ -8,7 +8,6 @@
     <input id="image-selector" type="file" />
     <button id="predict-button">Predict</button>
     <p>PREDICTION: <span id="result">...</span></p>
-    <p>PROBABILITY: <span id="probability">...</span></p>
     <img id="selected-image" width="400" src="" />
   </body>
 
@@ -38,7 +37,7 @@
       };
       console.log(message);
       $.post(
-        "http://127.0.0.1:5000/predict",
+        "http://192.168.1.10:5000/predict",
         JSON.stringify(message),
         function (response) {
           $("#result").text(response.prediction.result);
