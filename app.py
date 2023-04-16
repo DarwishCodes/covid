@@ -28,8 +28,8 @@ def index():
 def predict():
 
 	# Decode the encoded Image from base64 to dataBytesIO
-	#message = request.get_json(force=True)
-	#encoded = message['image']
+	message = request.get_json(force=True)
+	encoded = message['image']
 	#decoded = base64.b64decode(encoded)
 	#dataBytesIO=io.BytesIO(decoded)
 	#dataBytesIO.seek(0)
@@ -43,10 +43,10 @@ def predict():
 	
 	# Convert the prediction to a class label
 	#label = 'NORMAL' if prediction[0][0] > 0.5 else 'PNEUMONIA'
-	label = 0;
-	print(label)
 
-	response = {'prediction': {'result': label}}
+	print(encoded)
+
+	response = {'prediction': {'result': encoded}}
 
 	return jsonify(response)
 
