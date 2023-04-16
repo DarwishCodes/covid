@@ -41,14 +41,13 @@ def predict():
 	test_image=preprocess(image)
 
 	# Start predict the image
-	#prediction = model.predict(test_image)
-	
+	prediction = model.predict(test_image)
 	# Convert the prediction to a class label
-	#label = 'NORMAL' if prediction[0][0] > 0.5 else 'PNEUMONIA'
+	label = 'NORMAL' if prediction[0][0] > 0.5 else 'PNEUMONIA'
 
-	final = "final"
+	print(label)
 
-	response = {'prediction': {'result': final}}
+	response = {'prediction': {'result': label}}
 
 	return jsonify(response)
 
