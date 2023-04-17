@@ -6,10 +6,12 @@ import numpy as np
 import base64
 from PIL import Image
 import io
+from flask_cors import CORS
 
 img_size = 150
 
 app = Flask(__name__) 
+CORS(app)
 
 with tf.device('/cpu:0'):
     model = load_model('model/model.h5')

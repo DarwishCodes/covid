@@ -36,8 +36,9 @@
         image: base64Image,
       };
       console.log(message);
+      $("#result").text("Loading");
       $.post(
-        "https://covid-detector-q4n1.onrender.com/predict",
+        "http://127.0.0.1:5000/predict",
         JSON.stringify(message),
         function (response) {
           $("#result").text(response.prediction.result);
