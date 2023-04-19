@@ -5,3 +5,4 @@ Pillow
 tensorflow
 gunicorn
 uvicorn
+flask_cors
